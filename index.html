@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerPrep Chatbot</title>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>CareerPrep Chatbot</h1>
+      <p>Mock interviews • Soft skills coaching • Resume ATS scoring</p>
+      <div class="status-row">
+        <span id="aiBadge" class="ai-badge">AI: Checking...</span>
+      </div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="chat">Interview Practice</button>
+      <button class="tab" data-tab="resume">Resume & ATS</button>
+      <button class="tab" data-tab="about">About</button>
+    </nav>
+
+    <section id="chat" class="tab-panel active">
+      <div class="controls">
+        <label>
+          Role / Track:
+          <select id="role">
+            <option value="hr">HR (Soft Skills)</option>
+            <option value="general">General</option>
+            <option value="software_engineer">Software Engineer</option>
+            <option value="aiml" selected>AI/ML</option>
+          </select>
+        </label>
+        <label>
+          Company:
+          <input id="company" placeholder="e.g., Google"/>
+        </label>
+        <label>
+          Difficulty:
+          <select id="difficulty">
+            <option>Easy</option>
+            <option selected>Medium</option>
+            <option>Hard</option>
+          </select>
+        </label>
+        <button id="startInterview">Start Interview</button>
+      </div>
+
+      <div id="chatWindow" class="chat-window"></div>
+
+      <div class="input-row">
+        <textarea id="userInput" placeholder="Type your answer here..."></textarea>
+        <button id="micBtn" title="Start/Stop voice input">🎤</button>
+        <button id="sendBtn">Send</button>
+      </div>
+
+      <div class="voice-controls">
+        <label><input type="checkbox" id="ttsToggle" checked> Speak bot replies</label>
+        <label><input type="checkbox" id="autoSendToggle"> Auto-send voice input</label>
+        <span id="voiceStatus" class="voice-status"></span>
+      </div>
+    </section>
+
+    <section id="resume" class="tab-panel">
+      <div class="uploader">
+        <label for="resumeFile">Upload Resume (PDF/DOCX/TXT):</label>
+        <input type="file" id="resumeFile" accept=".pdf,.docx,.txt"/>
+        <button id="extractBtn">Extract Text</button>
+      </div>
+
+      <div class="two-col">
+        <div class="col">
+          <h3>Resume Text</h3>
+          <textarea id="resumeText" placeholder="Extracted resume text will appear here..."></textarea>
+        </div>
+        <div class="col">
+          <h3>Job Description</h3>
+          <textarea id="jobDesc" placeholder="Paste a job description here..."></textarea>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="scoreBtn">Get ATS Score</button>
+      </div>
+
+      <div id="scoreCard" class="score-card hidden">
+        <h3>ATS Match Score: <span id="scoreVal">--</span>/100</h3>
+        <div class="keywords">
+          <div>
+            <h4>Present Keywords</h4>
+            <ul id="presentList"></ul>
+          </div>
+          <div>
+            <h4>Missing Keywords</h4>
+            <ul id="missingList"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="tab-panel">
+      <h3>How it works</h3>
+      <ul>
+        <li><strong>Interview Practice:</strong> Choose a role and click <em>Start Interview</em>. Answer questions; the bot gives feedback (length, STAR structure, fillers, quantification) and asks the next question.</li>
+        <li><strong>Resume & ATS:</strong> Upload your resume, paste a job description, and get a keyword-based ATS score with suggestions.</li>
+        <li>This version runs fully free using local heuristics. You can plug in Gemini/Vertex AI later for advanced conversations.</li>
+      </ul>
+    </section>
+
+    <footer>
+      <small>Built with Python (Flask) + HTML/CSS/JS — Free, offline-friendly</small>
+    </footer>
+  </div>
+
+  <script>
+    window.__AI_ENABLED__ = {{ 'true' if ai_enabled else 'false' }};
+  </script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
