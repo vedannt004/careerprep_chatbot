@@ -33,3 +33,6 @@ Many college students face challenges during placements:
 .Database (planned): SQLite / MySQL
 .Version Control: Git, GitHub
 .IDE & Tools: VS Code, PowerShell
+
+#screen shots 
+https://github.com/vedannt004/careerprep_chatbot/blob/main/Screenshot%202025-08-20%20211447.png
