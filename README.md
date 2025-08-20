@@ -36,3 +36,4 @@ Many college students face challenges during placements:
 
 #screen shots 
 https://github.com/vedannt004/careerprep_chatbot/blob/main/Screenshot%202025-08-20%20211447.png
+https://github.com/vedannt004/careerprep_chatbot/blob/main/Screenshot%202025-08-20%20211507.png
